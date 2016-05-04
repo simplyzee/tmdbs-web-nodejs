@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import { Router, Route, hashHistory } from 'react-router';
-import Home from './app';
+import App from './app';
 
 ReactDom.render(
     /*<Router history={hashHistory}>
@@ -9,6 +9,6 @@ ReactDom.render(
 
         </Route>
     </Router>,*/
-    <Home />,
+    <App source="http://localhost:3000/api/latestmovies" />,
     document.getElementById('root')
 );
