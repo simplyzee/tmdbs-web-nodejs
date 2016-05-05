@@ -1,20 +1,25 @@
 require('../sass/main.scss');
 
 import React from 'react';
-import $ from 'jquery';
+import 'whatwg-fetch';
 
 class App extends React.Component {
     constructor() {
         super();
-        this.state = { data: [] };
+        this.state = { results: [] };
     };
 
     getLatestMovies() {
-        $.get(this.props.source, function (result) {
-           this.setState({
-               data: result
-           });
-        }.bind(this));
+        fetch(this.props.source)
+            .then((response) => {
+                return response.json();
+            })
+            .then((json) => {
+                this.setState(json);
+            })
+            .catch((ex) => {
+                console.log('parsing failed', ex);
+            });
     }
 
     componentDidMount() {
@@ -27,9 +32,9 @@ class App extends React.Component {
 
     render() {
         return (
-            <div>
-                {this.state.data.page}
-            </div>
+            <ul>
+                {this.state.results.map(result => <li>{result.id}</li>)}
+            </ul>
         );
     }
 }
