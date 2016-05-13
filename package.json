@@ -23,6 +23,7 @@
     "react": "^15.0.2",
     "react-bootstrap": "^0.29.4",
     "react-dom": "^15.0.2",
+    "react-loader": "^2.4.0",
     "react-motion": "^0.4.3",
     "react-motion-menu": "^0.2.1",
     "react-redux": "^4.4.5",

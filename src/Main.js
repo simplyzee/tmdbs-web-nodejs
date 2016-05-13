@@ -1,4 +1,5 @@
 require('./main.scss');
+var Loader = require('react-loader');
 
 import React from 'react';
 import 'whatwg-fetch';
@@ -14,7 +15,10 @@ import {
 class Main extends React.Component {
     constructor() {
         super();
-        this.state = { results: [] };
+        this.state = {
+            movies: [],
+            loaded: false
+        };
     };
 
     getLatestMovies() {
@@ -22,8 +26,11 @@ class Main extends React.Component {
             .then((response) => {
                 return response.json();
             })
-            .then((json) => {
-                this.setState(json);
+            .then((results) => {
+                this.setState({
+                    movies: results.results,
+                    loaded: true
+                });
             })
             .catch((ex) => {
                 console.log('Parsing latest movies failed', ex);
@@ -51,23 +58,32 @@ class Main extends React.Component {
                     </Grid>
                 </div>
 
-                <div className="movies">
-                    <Grid>
-                        <Row className="show-grid">
-                            <Col lg={12}>
-                                <ul className="latest-movies list-inline">
-                                    {this.state.results.map(result => <li>
-                                        <img className="movie-poster" src={"http://image.tmdb.org/t/p/w1280" + result.poster_path} />
-                                        <p className="movie-title">{result.title}</p>
-                                    </li>)}
-                                </ul>
-                            </Col>
-                        </Row>
-                    </Grid>
-                </div>
+
+                <Loader loaded={this.state.loaded} color="#16A085">
+                    <div className="movies">
+                        <Grid>
+                            <Row className="show-grid">
+                                <Col lg={12}>
+                                    <ul className="latest-movies list-inline">
+                                        {this.state.movies.map(result =>
+                                            <li>
+                                                <img className="movie-poster" src={"http://image.tmdb.org/t/p/w1280" + result.poster_path} />
+                                                <p className="movie-title">{result.title}</p>
+                                            </li>
+                                        )}
+                                    </ul>
+                                </Col>
+                            </Row>
+                        </Grid>
+                    </div>
+                </Loader>
             </div>
         );
     }
 }
+
+var loaderOptions = {
+    color: '#16A085'
+};
 
 export default Main;

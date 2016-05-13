@@ -33,7 +33,7 @@ class Navigation extends React.Component {
                       y={0}
                       x={0}
                       customStyle={{
-                          color: "#000",
+                          color: "#FFFFFF",
                           textAlign:"center",
                           lineHeight:"50px",
                           backgroundColor: "#16A085",
