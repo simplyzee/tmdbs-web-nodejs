@@ -58,6 +58,7 @@ class Main extends React.Component {
                                 <ul className="latest-movies list-inline">
                                     {this.state.results.map(result => <li>
                                         <img className="movie-poster" src={"http://image.tmdb.org/t/p/w1280" + result.poster_path} />
+                                        <p className="movie-title">{result.title}</p>
                                     </li>)}
                                 </ul>
                             </Col>

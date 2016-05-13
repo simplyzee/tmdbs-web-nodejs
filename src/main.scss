@@ -1,5 +1,6 @@
 body {
   background-color: #2c3e50!important;
+  font-family: 'Catamaran', sans-serif!important;
 }
 
 .header {
@@ -10,9 +11,20 @@ body {
 
 ul.latest-movies {
   li {
+    width: 25%;
+    position: relative;
+
+    p.movie-title {
+      margin-top: 10px;
+      color: #FFFFFF;
+      text-align: center;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+
     img {
       &.movie-poster {
-        width: 30%;
+        width: 100%;
         display: block;
       }
     }
