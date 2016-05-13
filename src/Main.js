@@ -1,3 +1,5 @@
+require('./main.scss');
+
 import React from 'react';
 import 'whatwg-fetch';
 import Navigation from './Components/Navigation/Navigation';
@@ -39,23 +41,29 @@ class Main extends React.Component {
     render() {
         return (
             <div>
-                <Grid>
-                    <Row className="show-grid">
-                        <Col lg={12}>
-                            <Navigation />
-                        </Col>
-                    </Row>
-                </Grid>
+                <div className="header">
+                    <Grid>
+                        <Row className="show-grid">
+                            <Col lg={12}>
+                                <Navigation />
+                            </Col>
+                        </Row>
+                    </Grid>
+                </div>
 
-                <Grid>
-                    <Row className="show-grid">
-                        <Col lg={12}>
-                            <ul>
-                                {this.state.results.map(result => <Button>{result.id}</Button>)}
-                            </ul>
-                        </Col>
-                    </Row>
-                </Grid>
+                <div className="movies">
+                    <Grid>
+                        <Row className="show-grid">
+                            <Col lg={12}>
+                                <ul className="latest-movies list-inline">
+                                    {this.state.results.map(result => <li>
+                                        <img className="movie-poster" src={"http://image.tmdb.org/t/p/w1280" + result.poster_path} />
+                                    </li>)}
+                                </ul>
+                            </Col>
+                        </Row>
+                    </Grid>
+                </div>
             </div>
         );
     }
