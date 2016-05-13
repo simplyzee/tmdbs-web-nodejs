@@ -2,6 +2,13 @@ import React from 'react';
 import 'whatwg-fetch';
 import Navigation from './Components/Navigation/Navigation';
 
+import {
+    Button,
+    Grid,
+    Row,
+    Col
+} from 'react-bootstrap';
+
 class Main extends React.Component {
     constructor() {
         super();
@@ -31,12 +38,26 @@ class Main extends React.Component {
 
     render() {
         return (
-            <div className="container">
-                <Navigation />
+            <div>
+                <div class="header-two">
+                    <Grid>
+                        <Row className="show-grid">
+                            <Col lg={12}>
+                                <Navigation />
+                            </Col>
+                        </Row>
+                    </Grid>
+                </div>
 
-                <ul>
-                    {this.state.results.map(result => <Button>{result.id}</Button>)}
-                </ul>
+                <Grid>
+                    <Row className="show-grid">
+                        <Col lg={12}>
+                            <ul>
+                                {this.state.results.map(result => <Button>{result.id}</Button>)}
+                            </ul>
+                        </Col>
+                    </Row>
+                </Grid>
             </div>
         );
     }

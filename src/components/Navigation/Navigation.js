@@ -23,7 +23,7 @@ class Navigation extends React.Component {
 
     render() {
         return (
-            <header>
+            <div>
                 <Menu direction="horizontal"
                       onOpen={this.handleOnOpen.bind(this)}
                       onClose={this.handleOnClose.bind(this)}
@@ -43,7 +43,7 @@ class Navigation extends React.Component {
                     <div><i className={this.state.menu.isOpen ? "fa fa-times" : "fa fa-bars"}></i></div>
                     <div><i className="fa fa-home"></i></div>
                 </Menu>
-            </header>
+            </div>
         );
     }
 }
