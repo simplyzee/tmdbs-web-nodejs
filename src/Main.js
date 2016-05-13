@@ -39,15 +39,13 @@ class Main extends React.Component {
     render() {
         return (
             <div>
-                <div class="header-two">
-                    <Grid>
-                        <Row className="show-grid">
-                            <Col lg={12}>
-                                <Navigation />
-                            </Col>
-                        </Row>
-                    </Grid>
-                </div>
+                <Grid>
+                    <Row className="show-grid">
+                        <Col lg={12}>
+                            <Navigation />
+                        </Col>
+                    </Row>
+                </Grid>
 
                 <Grid>
                     <Row className="show-grid">

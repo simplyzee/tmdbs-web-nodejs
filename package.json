@@ -4,6 +4,8 @@
   "description": "Frontend website using nodejs and reactjs",
   "main": "server.js",
   "scripts": {
+    "build-dist": "node node_modules/webpack/bin/webpack",
+    "watch": "node node_modules/webpack/bin/webpack -w",
     "start": "node node_modules/webpack/bin/webpack && nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
