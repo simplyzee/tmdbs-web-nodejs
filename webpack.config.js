@@ -3,7 +3,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
     entry: [
-        './src/components/index'
+        './src/Index'
     ],
     module: {
         loaders: [{

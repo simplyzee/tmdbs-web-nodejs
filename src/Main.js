@@ -1,9 +1,8 @@
-require('../sass/main.scss');
-
 import React from 'react';
 import 'whatwg-fetch';
+import Navigation from './Components/Navigation/Navigation';
 
-class App extends React.Component {
+class Main extends React.Component {
     constructor() {
         super();
         this.state = { results: [] };
@@ -18,7 +17,7 @@ class App extends React.Component {
                 this.setState(json);
             })
             .catch((ex) => {
-                console.log('parsing failed', ex);
+                console.log('Parsing latest movies failed', ex);
             });
     }
 
@@ -32,11 +31,15 @@ class App extends React.Component {
 
     render() {
         return (
-            <ul>
-                {this.state.results.map(result => <li>{result.id}</li>)}
-            </ul>
+            <div className="container">
+                <Navigation />
+
+                <ul>
+                    {this.state.results.map(result => <Button>{result.id}</Button>)}
+                </ul>
+            </div>
         );
     }
 }
 
-export default App;
+export default Main;
