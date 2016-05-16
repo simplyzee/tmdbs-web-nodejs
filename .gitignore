@@ -79,4 +79,6 @@ jspm_packages
 # Optional REPL history
 .node_repl_history
 
+assets/
+
 # Created by .ignore support plugin (hsz.mobi)
