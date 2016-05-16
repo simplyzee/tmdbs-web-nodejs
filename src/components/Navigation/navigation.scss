@@ -2,3 +2,16 @@ header {
   position: relative;
   display: block;
 }
+
+.menu {
+  color: #FFFFFF;
+  text-align: center;
+  line-height: 50px;
+  background-color: #16A085;
+  border: 1px solid #16A085;
+  border-radius: 50%;
+
+  a {
+    color: #FFFFFF;
+  }
+}

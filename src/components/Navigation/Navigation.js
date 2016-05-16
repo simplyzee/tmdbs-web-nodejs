@@ -5,6 +5,7 @@ import {Motion, spring} from 'react-motion';
 import Menu from 'react-motion-menu';
 
 class Navigation extends React.Component {
+    
     constructor(props) {
         super(props);
 
@@ -41,7 +42,11 @@ class Navigation extends React.Component {
                           borderRadius: "50%"
                         }}>
                     <div><i className={this.state.menu.isOpen ? "fa fa-times" : "fa fa-bars"}></i></div>
-                    <div><i className="fa fa-home"></i></div>
+                    <div>
+                        <a href="/">
+                            <i className="fa fa-home"></i>
+                        </a>
+                    </div>
                 </Menu>
             </div>
         );

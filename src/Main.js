@@ -4,15 +4,16 @@ var Loader = require('react-loader');
 import React from 'react';
 import 'whatwg-fetch';
 import Navigation from './Components/Navigation/Navigation';
+import Search from './Components/Search/Search';
 
 import {
-    Button,
     Grid,
     Row,
     Col
 } from 'react-bootstrap';
 
 class Main extends React.Component {
+
     constructor() {
         super();
         this.state = {
@@ -51,23 +52,26 @@ class Main extends React.Component {
                 <div className="header">
                     <Grid>
                         <Row className="show-grid">
-                            <Col lg={12}>
+                            <Col lg={9} md={9} sm={9} xs={9}>
                                 <Navigation />
+                            </Col>
+                            <Col lg={3} md={3} sm={3} xs={3}>
+                                <Search />
                             </Col>
                         </Row>
                     </Grid>
                 </div>
 
 
-                <Loader loaded={this.state.loaded} color="#16A085">
+                <Loader loaded={this.state.loaded} options={loaderOptions}>
                     <div className="movies">
                         <Grid>
                             <Row className="show-grid">
-                                <Col lg={12}>
+                                <Col lg={12} md={12} sm={12} xs={12}>
                                     <ul className="latest-movies list-inline">
                                         {this.state.movies.map(result =>
                                             <li>
-                                                <img className="movie-poster" src={"http://image.tmdb.org/t/p/w1280" + result.poster_path} />
+                                                {result.poster_path && <img className="movie-poster" src={"http://image.tmdb.org/t/p/w1280" + result.poster_path} />}
                                                 <p className="movie-title">{result.title}</p>
                                             </li>
                                         )}
