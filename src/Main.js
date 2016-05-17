@@ -24,18 +24,12 @@ class Main extends React.Component {
 
     getLatestMovies() {
         fetch(this.props.source)
-            .then((response) => {
-                return response.json();
-            })
-            .then((results) => {
-                this.setState({
-                    movies: results.results,
-                    loaded: true
-                });
-            })
-            .catch((ex) => {
-                console.log('Parsing latest movies failed', ex);
-            });
+            .then(response => response.json())
+            .then(results => this.setState({
+                movies: results.results,
+                loaded: true
+            }))
+            .catch(ex => console.log('Error parsing getLatestMovies', ex));
     }
 
     componentDidMount() {
