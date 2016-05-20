@@ -52,11 +52,15 @@ class Main extends React.Component {
 
         const movieSidebar = this.state.showSideBar ? <MovieSideBar /> : "";
 
-        const latestMovies = this.state.movies.length ? <ul className="latest-movies list-inline">{ this.state.movies.map(result =>
-            <li>
-                { result.poster_path && <img className="movie-poster" onClick={this.showMovieSideBar.bind(this)} src={"http://image.tmdb.org/t/p/w1280" + result.poster_path} /> }
-                <p className="movie-title">{result.title}</p>
-            </li>) }</ul> : <h1 className="heading-failure">No Movies Found</h1>;
+        const latestMovies = this.state.movies.length ?
+            <ul className="latest-movies list-inline">
+                { this.state.movies.map(result =>
+                    <li>
+                        <img className="movie-poster" onClick={this.showMovieSideBar.bind(this)} src={"http://image.tmdb.org/t/p/w1280" + result.poster_path} />
+                        <p className="movie-title">{result.title}</p>
+                    </li>
+                )}
+            </ul> : <h1 className="heading-failure">No Movies Found</h1>;
 
         return (
             <div>
