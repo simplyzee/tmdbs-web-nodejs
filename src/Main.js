@@ -6,11 +6,7 @@ import 'whatwg-fetch';
 import Navigation from './Components/Navigation/Navigation';
 import Search from './Components/Search/Search';
 
-import {
-    Grid,
-    Row,
-    Col
-} from 'react-bootstrap';
+import { Grid, Row, Col } from 'react-bootstrap';
 
 class Main extends React.Component {
 
@@ -18,31 +14,54 @@ class Main extends React.Component {
         super();
         this.state = {
             movies: [],
-            loaded: false
+            loaded: false,
+            showSideBar: false
         };
     };
 
     getLatestMovies() {
-        fetch(this.props.source)
+        fetch("http://localhost:3000/api/latestmovies")
             .then(response => response.json())
             .then(results => this.setState({
                 movies: results.results,
                 loaded: true
             }))
-            .catch(ex => console.log('Error parsing getLatestMovies', ex));
+            .catch(error => {
+                this.setState({
+                    loaded: true
+                });
+                console.log('Error parsing latest movies', error)
+            });
     }
 
     componentDidMount() {
-        this.serverRequest = this.getLatestMovies();
+        this.getLatestMovies();
     }
 
     componentWillUnmount() {
-        this.serverRequest.abort();
+        this.getLatestMovies().abort();
+    }
+
+    showMovieSideBar() {
+        this.setState({
+            showSideBar: true
+        })
     }
 
     render() {
+
+        const movieSidebar = this.state.showSideBar ? <MovieSideBar /> : "";
+
+        const latestMovies = this.state.movies.length ? <ul className="latest-movies list-inline">{ this.state.movies.map(result =>
+            <li>
+                { result.poster_path && <img className="movie-poster" onClick={this.showMovieSideBar.bind(this)} src={"http://image.tmdb.org/t/p/w1280" + result.poster_path} /> }
+                <p className="movie-title">{result.title}</p>
+            </li>) }</ul> : <h1 className="heading-failure">No Movies Found</h1>;
+
         return (
             <div>
+                {movieSidebar}
+
                 <div className="header">
                     <Grid>
                         <Row className="show-grid">
@@ -62,14 +81,7 @@ class Main extends React.Component {
                         <Grid>
                             <Row className="show-grid">
                                 <Col lg={12} md={12} sm={12} xs={12}>
-                                    <ul className="latest-movies list-inline">
-                                        {this.state.movies.map(result =>
-                                            <li>
-                                                {result.poster_path && <img className="movie-poster" src={"http://image.tmdb.org/t/p/w1280" + result.poster_path} />}
-                                                <p className="movie-title">{result.title}</p>
-                                            </li>
-                                        )}
-                                    </ul>
+                                    { latestMovies }
                                 </Col>
                             </Row>
                         </Grid>

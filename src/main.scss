@@ -1,12 +1,20 @@
 body {
   background-color: #2c3e50!important;
   font-family: 'Catamaran', sans-serif!important;
+  height: 100%;
 }
 
 .header {
   display: block;
   height: 150px;
   padding: 25px 0;
+}
+
+h1 {
+  &.heading-failure {
+    color: #FFFFFF;
+    text-align: center;
+  }
 }
 
 ul.latest-movies {
