@@ -5,6 +5,8 @@ import React from 'react';
 import 'whatwg-fetch';
 import Header from './Components/Header/Header';
 import { Grid, Row, Col } from 'react-bootstrap';
+import { Link } from 'react-router';
+
 
 class Main extends React.Component {
 
@@ -45,7 +47,9 @@ class Main extends React.Component {
             <ul className="latest-movies list-inline">
                 { this.state.movies.map(result =>
                     <li>
-                        <img className="movie-poster" src={"http://image.tmdb.org/t/p/w1280" + result.poster_path} />
+                        <Link to={"/movie/" + result.id}>
+                            <img className="movie-poster" src={"http://image.tmdb.org/t/p/w1280" + result.poster_path} />
+                        </Link>
                         <p className="movie-title">{result.title}</p>
                     </li>
                 )}
