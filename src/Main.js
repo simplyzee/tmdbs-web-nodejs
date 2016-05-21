@@ -3,9 +3,7 @@ var Loader = require('react-loader');
 
 import React from 'react';
 import 'whatwg-fetch';
-import Navigation from './Components/Navigation/Navigation';
-import Search from './Components/Search/Search';
-
+import Header from './Components/Header/Header';
 import { Grid, Row, Col } from 'react-bootstrap';
 
 class Main extends React.Component {
@@ -14,8 +12,7 @@ class Main extends React.Component {
         super();
         this.state = {
             movies: [],
-            loaded: false,
-            showSideBar: false
+            loaded: false
         };
     };
 
@@ -42,21 +39,13 @@ class Main extends React.Component {
         this.getLatestMovies().abort();
     }
 
-    showMovieSideBar() {
-        this.setState({
-            showSideBar: true
-        })
-    }
-
     render() {
 
-        const movieSidebar = this.state.showSideBar ? <MovieSideBar /> : "";
-
-        const latestMovies = this.state.movies.length ?
+        let latestMovies = this.state.movies.length ?
             <ul className="latest-movies list-inline">
                 { this.state.movies.map(result =>
                     <li>
-                        <img className="movie-poster" onClick={this.showMovieSideBar.bind(this)} src={"http://image.tmdb.org/t/p/w1280" + result.poster_path} />
+                        <img className="movie-poster" src={"http://image.tmdb.org/t/p/w1280" + result.poster_path} />
                         <p className="movie-title">{result.title}</p>
                     </li>
                 )}
@@ -64,21 +53,7 @@ class Main extends React.Component {
 
         return (
             <div>
-                {movieSidebar}
-
-                <div className="header">
-                    <Grid>
-                        <Row className="show-grid">
-                            <Col lg={9} md={9} sm={9} xs={9}>
-                                <Navigation />
-                            </Col>
-                            <Col lg={3} md={3} sm={3} xs={3}>
-                                <Search />
-                            </Col>
-                        </Row>
-                    </Grid>
-                </div>
-
+                <Header />
 
                 <Loader loaded={this.state.loaded} options={loaderOptions}>
                     <div className="movies">

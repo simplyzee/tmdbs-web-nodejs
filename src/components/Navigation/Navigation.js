@@ -1,11 +1,11 @@
 require('./navigation.scss');
 
 import React from 'react';
-import {Motion, spring} from 'react-motion';
+import { Motion, spring } from 'react-motion';
 import Menu from 'react-motion-menu';
 
 class Navigation extends React.Component {
-    
+
     constructor(props) {
         super(props);
 

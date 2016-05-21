@@ -1,11 +1,7 @@
 require('./search.scss');
 
 import React from 'react';
-import {
-    Button,
-    FormGroup,
-    FormControl
-} from 'react-bootstrap';
+import { Button, FormGroup, FormControl } from 'react-bootstrap';
 
 class Search extends React.Component {
 
