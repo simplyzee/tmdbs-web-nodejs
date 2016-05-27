@@ -1,5 +1,6 @@
 require('./moviedetails.scss');
 var Loader = require('react-loader');
+var Blur = require('react-blur');
 
 import React from 'react';
 import 'whatwg-fetch';
@@ -47,47 +48,36 @@ class MovieDetails extends React.Component {
 
         let movieInformation = this.state.movie;
         let moviePoster = movieInformation.poster_path;
-
-
-        console.log(movieInformation);
-
-        var background = {
-            backgroundImage: 'url(http://image.tmdb.org/t/p/w1280' + movieInformation.backdrop_path + ')',
-            height: '1280px',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center center'
-        };
+        let movieBackdrop = movieInformation.backdrop_path;
 
         return(
-            <div style={background}>
+            <Blur img={ 'http://image.tmdb.org/t/p/w1280' + movieBackdrop } blurRadius={100} className="blurred-background">
                 <Header />
-                <Loader loaded={this.state.loaded}>
+                <Loader loaded={ this.state.loaded }>
                     <div className="movie-details">
                         <Grid>
                             <Row className="show-grid">
                                 <Col lg={12} md={12} sm={12} xs={12}>
                                     <Col lg={4} md={4} sm={12} xs={12} className="movie-sidebar">
                                         <div className="movie-poster">
-                                            <img className="img-responsive" src={"http://image.tmdb.org/t/p/w342" + moviePoster} />
+                                            <img className="img-responsive" src={ "http://image.tmdb.org/t/p/w342" + moviePoster } />
                                         </div>
                                     </Col>
                                     <Col lg={8} md={8} sm={12} xs={12} className="movie-right-info-pane">
-                                        <h1 className="movie-title">{movieInformation.title}</h1>
+                                        <h1 className="movie-title">{ movieInformation.title }</h1>
                                         <div className="movie-info">
-                                            <span>Release date: {movieInformation.release_date}</span> | <span>Status: { movieInformation.status }</span>
+                                            <span>Release date: { movieInformation.release_date }</span> | <span>Status: { movieInformation.status }</span>
                                         </div>
                                         <div className="movie-overview">
-                                            {movieInformation.overview}
+                                            { movieInformation.overview }
                                         </div>
                                     </Col>
-
-
                                 </Col>
                             </Row>
                         </Grid>
                     </div>
                 </Loader>
-            </div>
+            </Blur>
         )
     }
 
