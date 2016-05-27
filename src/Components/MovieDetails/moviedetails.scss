@@ -15,6 +15,21 @@
   }
 }
 
+.movie-details {
+  .backdrop-overlay {
+    background: rgba(41, 128, 185, 0.5);
+    border-radius: 5px;
+    border: 1px solid #3498db;
+    padding-bottom:20px
+  }
+
+  .movie-poster {
+    img {
+      height: 400px;
+    }
+  }
+}
+
 .movie-right-info-pane {
   .movie-title {
     text-transform: uppercase;

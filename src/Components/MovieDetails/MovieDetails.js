@@ -63,7 +63,7 @@ class MovieDetails extends React.Component {
                                             <img className="img-responsive" src={ "http://image.tmdb.org/t/p/w342" + moviePoster } />
                                         </div>
                                     </Col>
-                                    <Col lg={8} md={8} sm={12} xs={12} className="movie-right-info-pane">
+                                    <Col lg={8} md={8} sm={12} xs={12} className="movie-right-info-pane backdrop-overlay">
                                         <h1 className="movie-title">{ movieInformation.title }</h1>
                                         <div className="movie-info">
                                             <span>Release date: { movieInformation.release_date }</span> | <span>Status: { movieInformation.status }</span>
