@@ -7,6 +7,7 @@ import 'whatwg-fetch';
 import { Button, Col, Grid, Row } from 'react-bootstrap';
 
 import Header from '../Header/Header';
+import MovieTrailer from './MovieTrailer/MovieTrailer';
 
 class MovieDetails extends React.Component {
 
@@ -47,9 +48,10 @@ class MovieDetails extends React.Component {
     render() {
 
         let movieInformation = this.state.movie;
+        let movieId = movieInformation.id;
         let moviePoster = movieInformation.poster_path;
         let movieBackdrop = movieInformation.backdrop_path;
-
+        
         return(
             <Blur img={ 'http://image.tmdb.org/t/p/w1280' + movieBackdrop } blurRadius={100} className="blurred-background">
                 <Header />
@@ -70,6 +72,8 @@ class MovieDetails extends React.Component {
                                         </div>
                                         <div className="movie-overview">
                                             { movieInformation.overview }
+
+                                            <MovieTrailer movieId={movieId} />
                                         </div>
                                     </Col>
                                 </Col>
@@ -80,7 +84,6 @@ class MovieDetails extends React.Component {
             </Blur>
         )
     }
-
 }
 
 export default MovieDetails;

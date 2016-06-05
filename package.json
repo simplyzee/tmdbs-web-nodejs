@@ -28,6 +28,7 @@
     "react-loader": "^2.4.0",
     "react-motion": "^0.4.3",
     "react-motion-menu": "^0.2.1",
+    "react-player": "^0.7.2",
     "react-redux": "^4.4.5",
     "react-router": "^2.4.1",
     "redux": "^3.5.2",
