@@ -19,7 +19,7 @@ class Main extends React.Component {
     };
 
     getLatestMovies() {
-        fetch("https://react-movie-hub-api.herokuapp.com/api/latestmovies")
+        fetch("http://localhost:3000/api/latestmovies")
             .then(response => response.json())
             .then(results => this.setState({
                 movies: results.results,
@@ -36,11 +36,7 @@ class Main extends React.Component {
     componentDidMount() {
         this.getLatestMovies();
     }
-
-    componentWillUnmount() {
-        this.getLatestMovies().abort();
-    }
-
+    
     render() {
 
         let latestMovies = this.state.movies.length ?

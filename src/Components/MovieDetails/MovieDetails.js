@@ -21,7 +21,7 @@ class MovieDetails extends React.Component {
     }
 
     getMovieDetails() {
-        fetch("https://react-movie-hub-api.herokuapp.com/api/movie/" + this.props.params.movieId)
+        fetch("http://localhost:3000/api/movie/" + this.props.params.movieId)
             .then(response => response.json())
             .then((results) => {
                 this.setState({
@@ -40,11 +40,7 @@ class MovieDetails extends React.Component {
     componentDidMount() {
         this.getMovieDetails();
     }
-
-    componentWillUnmount() {
-        this.getMovieDetails().abort();
-    }
-
+    
     render() {
 
         let movieInformation = this.state.movie;
@@ -58,14 +54,14 @@ class MovieDetails extends React.Component {
                 <Loader loaded={ this.state.loaded }>
                     <div className="movie-details">
                         <Grid>
-                            <Row className="show-grid">
+                            <Row className="show-grid backdrop-overlay">
                                 <Col lg={12} md={12} sm={12} xs={12}>
                                     <Col lg={4} md={4} sm={12} xs={12} className="movie-sidebar">
                                         <div className="movie-poster">
                                             <img className="img-responsive" src={ "http://image.tmdb.org/t/p/w342" + moviePoster } />
                                         </div>
                                     </Col>
-                                    <Col lg={8} md={8} sm={12} xs={12} className="movie-right-info-pane backdrop-overlay">
+                                    <Col lg={8} md={8} sm={12} xs={12} className="movie-right-info-pane">
                                         <h1 className="movie-title">{ movieInformation.title }</h1>
                                         <div className="movie-info">
                                             <span>Release date: { movieInformation.release_date }</span> | <span>Status: { movieInformation.status }</span>

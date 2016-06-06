@@ -31,10 +31,6 @@ class MovieTrailer extends React.Component {
         this.getMovieTrailerFromId();
     }
 
-    componentWillUnmount() {
-        this.getMovieTrailerFromId().abortRequest();
-    }
-
     render() {
         let videoId = this.state.videos.key;
         return <ReactPlayer url={"https://www.youtube.com/watch?v=" + videoId} />
