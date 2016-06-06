@@ -7,6 +7,8 @@ import Navigation from '../Navigation/Navigation';
 import Search from '../Search/Search';
 
 class Header extends React.Component {
+    // To do - Add <Search /> again
+
     render() {
         return (
             <div className="header">
@@ -16,7 +18,7 @@ class Header extends React.Component {
                             <Navigation />
                         </Col>
                         <Col lg={3} md={3} sm={3} xs={3}>
-                            <Search />
+
                         </Col>
                     </Row>
                 </Grid>

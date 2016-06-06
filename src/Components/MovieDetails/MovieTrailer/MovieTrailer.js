@@ -33,7 +33,12 @@ class MovieTrailer extends React.Component {
 
     render() {
         let videoId = this.state.videos.key;
-        return <ReactPlayer url={"https://www.youtube.com/watch?v=" + videoId} />
+        return (
+            <div className="video-container">
+                <ReactPlayer url={"https://www.youtube.com/watch?v=" + videoId}
+                            controls="true" />
+            </div>
+        )
     }
 }
 
