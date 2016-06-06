@@ -21,7 +21,7 @@ class MovieDetails extends React.Component {
     }
 
     getMovieDetails() {
-        fetch("http://localhost:3000/api/movie/" + this.props.params.movieId)
+        fetch("https://react-movie-hub-api.herokuapp.com/api/movie/" + this.props.params.movieId)
             .then(response => response.json())
             .then((results) => {
                 this.setState({

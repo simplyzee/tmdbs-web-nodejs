@@ -19,7 +19,7 @@ class Main extends React.Component {
     };
 
     getLatestMovies() {
-        fetch("http://localhost:3000/api/latestmovies")
+        fetch("https://react-movie-hub-api.herokuapp.com/api/latestmovies")
             .then(response => response.json())
             .then(results => this.setState({
                 movies: results.results,
