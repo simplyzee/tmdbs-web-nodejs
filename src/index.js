@@ -5,7 +5,7 @@ import Main from './Main';
 import MovieDetails from './Components/MovieDetails/MovieDetails';
 
 ReactDom.render(
-    <Router history={browserHistory}>
+    <Router>
         <Route path="/" component={Main} />
         <Route path="/movie/:movieId" component={MovieDetails} />
     </Router>,
