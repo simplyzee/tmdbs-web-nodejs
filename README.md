@@ -1,4 +1,4 @@
-### tmdbs-web-nodejs
+### tmdbs-web-nodejs [![Dependency Status](https://david-dm.org/zee-ahmed/tmdbs-web-nodejs.svg)](https://david-dm.org/zee-ahmed/tmdbs-web-nodejs)
 A movie hub built using Node.JS with ReactJS as the template system. 
 Built for learning purposes to study ReactJS.
 
