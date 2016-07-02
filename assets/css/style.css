@@ -31,7 +31,10 @@ h1.heading-failure {
 
 ul.latest-movies li {
   width: 25%;
-  position: relative; }
+  position: relative;
+  overflow-y: hidden;
+  height: 460px;
+  margin-bottom: 10px; }
   ul.latest-movies li p.movie-title {
     margin-top: 10px;
     color: #FFFFFF;
@@ -40,7 +43,8 @@ ul.latest-movies li {
     font-weight: bold; }
   ul.latest-movies li img.movie-poster {
     width: 100%;
-    display: block; }
+    display: block;
+    height: 414px; }
 .video-container {
   position: relative;
   padding-bottom: 56.25%;

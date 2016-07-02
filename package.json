@@ -6,7 +6,7 @@
   "scripts": {
     "build-dist": "node node_modules/webpack/bin/webpack.js",
     "watch": "node node_modules/webpack/bin/webpack -w",
-    "start": "nodemon server.js",
+    "start": "node node_modules/webpack/bin/webpack && nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Zee",

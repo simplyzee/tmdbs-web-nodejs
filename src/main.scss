@@ -15,6 +15,9 @@ ul.latest-movies {
   li {
     width: 25%;
     position: relative;
+    overflow-y: hidden;
+    height: 460px;
+    margin-bottom: 10px; 
 
     p.movie-title {
       margin-top: 10px;
@@ -28,6 +31,7 @@ ul.latest-movies {
       &.movie-poster {
         width: 100%;
         display: block;
+        height: 414px;
       }
     }
   }

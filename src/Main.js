@@ -36,7 +36,7 @@ class Main extends React.Component {
     componentDidMount() {
         this.getLatestMovies();
     }
-    
+
     render() {
 
         let latestMovies = this.state.movies.length ?
