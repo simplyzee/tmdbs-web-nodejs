@@ -22,20 +22,22 @@ class MovieDetails extends React.Component {
     }
 
     getMovieDetails() {
-        fetch("http://localhost:3000/api/movie/" + this.props.params.movieId)
-            .then(response => response.json())
-            .then((results) => {
-                this.setState({
-                    movie: results,
-                    loaded: true
-                })
-            })
-            .catch(err => {
-                this.setState({
-                    loaded: true
-                });
-                console.log('Error fetching movie information', err)
-            });
+      var movieDetailsUrl = process.env.NODE_ENV == 'production' ? "http://react-movie-hub.herokuapp.com" : "http://localhost:3000";
+
+      fetch(movieDetailsUrl + "/api/movie/" + this.props.params.movieId)
+          .then(response => response.json())
+          .then((results) => {
+              this.setState({
+                  movie: results,
+                  loaded: true
+              })
+          })
+          .catch(err => {
+              this.setState({
+                  loaded: true
+              });
+              console.log('Error fetching movie information', err)
+          });
     }
 
     componentDidMount() {
@@ -48,7 +50,7 @@ class MovieDetails extends React.Component {
         let movieId = movieInformation.id;
         let moviePoster = movieInformation.poster_path;
         let movieBackdrop = movieInformation.backdrop_path;
-        
+
         return(
             <Blur img={ 'http://image.tmdb.org/t/p/w1280' + movieBackdrop } blurRadius={100} className="blurred-background">
                 <Header />

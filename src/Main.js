@@ -7,7 +7,6 @@ import Header from './Components/Header/Header';
 import { Grid, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router';
 
-
 class Main extends React.Component {
 
     constructor() {
@@ -19,7 +18,9 @@ class Main extends React.Component {
     };
 
     getLatestMovies() {
-        fetch("http://localhost:3000/api/latestmovies")
+        var latestMoviesUrl = process.env.NODE_ENV == 'production' ? "http://react-movie-hub.herokuapp.com" : "http://localhost:3000";
+
+        fetch(latestMoviesUrl + "/api/latestmovies")
             .then(response => response.json())
             .then(results => this.setState({
                 movies: results.results,

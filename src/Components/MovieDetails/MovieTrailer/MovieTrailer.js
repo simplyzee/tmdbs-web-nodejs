@@ -15,16 +15,18 @@ class MovieTrailer extends React.Component {
     }
 
     getMovieTrailerFromId() {
-        fetch("http://localhost:3000/api/movie/" + this.props.movieId + "/videos/")
-            .then(response => response.json())
-            .then((results) => {
-                this.setState({
-                    videos: results.results[0]
-                });
-            })
-            .catch(err => {
-                console.log('Error fetching video information', err)
-            });
+      var movieTrailerUrl = process.env.NODE_ENV == 'production' ? "http://react-movie-hub.herokuapp.com" : "http://localhost:3000";
+
+      fetch(movieTrailerUrl + "/api/movie/" + this.props.movieId + "/videos/")
+          .then(response => response.json())
+          .then((results) => {
+              this.setState({
+                  videos: results.results[0]
+              });
+          })
+          .catch(err => {
+              console.log('Error fetching video information', err)
+          });
     }
 
     componentWillMount() {
