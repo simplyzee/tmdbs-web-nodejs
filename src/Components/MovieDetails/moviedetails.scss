@@ -88,6 +88,11 @@
     h2 {
       text-transform: uppercase;
       font-weight: bold;
+
+      span {
+        color: gold;
+        float: right;
+      }
     }
 
     .movie-overview-text {

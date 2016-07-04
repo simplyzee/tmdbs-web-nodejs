@@ -152,6 +152,9 @@ ul.latest-movies li {
   .movie-right-info-pane .movie-overview h2 {
     text-transform: uppercase;
     font-weight: bold; }
+    .movie-right-info-pane .movie-overview h2 span {
+      color: gold;
+      float: right; }
   .movie-right-info-pane .movie-overview .movie-overview-text {
     margin: 10px 0; }
   .movie-right-info-pane .movie-overview .movie-trailer {

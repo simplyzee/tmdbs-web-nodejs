@@ -105,11 +105,10 @@ class MovieDetails extends React.Component {
 
                                     <Col lg={8} md={8} sm={12} xs={12} className="movie-right-info-pane">
                                         <div className="movie-overview">
-                                            <h2>Overview</h2>
+                                            <h2>Overview <span><i className="fa fa-star" aria-hidden="true"></i> { movieInformation.vote_average }</span></h2>
 
                                             <div className="movie-overview-text">
                                                 { movieInformation.overview }
-                                                <span><i className="fa fa-star" aria-hidden="true"></i> { movieInformation.vote_average }</span>
                                             </div>
 
                                             <div className="movie-trailer">
