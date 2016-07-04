@@ -10,6 +10,7 @@ import { Link } from 'react-router';
 import Header from '../Header/Header';
 import MovieTrailer from './MovieTrailer/MovieTrailer';
 import RelatedMovies from './RelatedMovies/RelatedMovies';
+import MovieImages from './MovieImages/MovieImages';
 
 const apiUrl = process.env.NODE_ENV == 'production' ? "http://react-movie-hub.herokuapp.com" : "http://localhost:3000";
 
@@ -114,6 +115,12 @@ class MovieDetails extends React.Component {
                                             <div className="movie-trailer">
                                                 <MovieTrailer movieId={movieId} />
                                             </div>
+                                        </div>
+
+                                        <div className="movie-backdrop-images">
+                                          <h3>Movie Shots</h3>
+
+                                          <MovieImages movieId={movieId} />
                                         </div>
 
                                         <div className="movie-related-movies">

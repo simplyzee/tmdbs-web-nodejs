@@ -91,6 +91,12 @@ ul.latest-movies li {
         text-align: center;
         text-transform: uppercase;
         font-weight: bold; }
+ul.movie-images {
+  list-style-type: none;
+  white-space: nowrap;
+  overflow-x: auto; }
+  ul.movie-images li {
+    display: inline-block; }
 .loadedContent {
   margin-bottom: 50px; }
 

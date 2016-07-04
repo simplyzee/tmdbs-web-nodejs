@@ -21,7 +21,6 @@ class RelatedMovies extends React.Component {
     fetch(apiUrl + "/api/movie/" + this.props.movieId + "/similar")
       .then(response => response.json())
       .then((results) => {
-          console.log(results.results);
           this.setState({
               similar_movies: results.results,
               loaded: true

@@ -1,0 +1,9 @@
+ul.movie-images {
+  list-style-type: none;
+  white-space: nowrap;
+  overflow-x: auto;
+
+  li {
+    display: inline-block;
+  }
+}

@@ -49300,6 +49300,10 @@
 
 	var _RelatedMovies2 = _interopRequireDefault(_RelatedMovies);
 
+	var _MovieImages = __webpack_require__(562);
+
+	var _MovieImages2 = _interopRequireDefault(_MovieImages);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -49479,6 +49483,16 @@
 	                                                { className: 'movie-trailer' },
 	                                                _react2.default.createElement(_MovieTrailer2.default, { movieId: movieId })
 	                                            )
+	                                        ),
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { className: 'movie-backdrop-images' },
+	                                            _react2.default.createElement(
+	                                                'h3',
+	                                                null,
+	                                                'Movie Shots'
+	                                            ),
+	                                            _react2.default.createElement(_MovieImages2.default, { movieId: movieId })
 	                                        ),
 	                                        _react2.default.createElement(
 	                                            'div',
@@ -52069,7 +52083,6 @@
 	            fetch(apiUrl + "/api/movie/" + this.props.movieId + "/similar").then(function (response) {
 	                return response.json();
 	            }).then(function (results) {
-	                console.log(results.results);
 	                _this2.setState({
 	                    similar_movies: results.results,
 	                    loaded: true
@@ -52638,6 +52651,113 @@
 
 	module.exports = stackBlurImage;
 
+
+/***/ },
+/* 562 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	__webpack_require__(230);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	__webpack_require__(563);
+
+	var apiUrl =  false ? "http://react-movie-hub.herokuapp.com" : "http://localhost:3000";
+
+	var MovieImages = function (_React$Component) {
+	    _inherits(MovieImages, _React$Component);
+
+	    function MovieImages(props) {
+	        _classCallCheck(this, MovieImages);
+
+	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(MovieImages).call(this, props));
+
+	        _this.state = {
+	            movie_images: []
+	        };
+	        return _this;
+	    }
+
+	    _createClass(MovieImages, [{
+	        key: 'getMovieImages',
+	        value: function getMovieImages() {
+	            var _this2 = this;
+
+	            fetch(apiUrl + "/api/movie/" + this.props.movieId + "/images").then(function (response) {
+	                return response.json();
+	            }).then(function (results) {
+	                _this2.setState({
+	                    movie_images: results.backdrops,
+	                    loaded: true
+	                });
+	            }).catch(function (err) {
+	                _this2.setState({
+	                    loaded: true
+	                });
+	                console.log('Error fetching movie images', err);
+	            });
+	        }
+	    }, {
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            this.getMovieImages();
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+
+	            var movieImages = this.state.movie_images.length ? _react2.default.createElement(
+	                'ul',
+	                { className: 'movie-images list-inline' },
+	                this.state.movie_images.map(function (result) {
+	                    return _react2.default.createElement(
+	                        'li',
+	                        null,
+	                        _react2.default.createElement('img', { className: 'img-responsive movie-image', src: "http://image.tmdb.org/t/p/w300" + result.file_path })
+	                    );
+	                })
+	            ) : _react2.default.createElement(
+	                'h1',
+	                { className: 'heading-failure' },
+	                'No Movies Images'
+	            );
+
+	            return _react2.default.createElement(
+	                'div',
+	                { className: 'movie-images-container' },
+	                movieImages
+	            );
+	        }
+	    }]);
+
+	    return MovieImages;
+	}(_react2.default.Component);
+
+	exports.default = MovieImages;
+
+/***/ },
+/* 563 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
 
 /***/ }
 /******/ ]);
