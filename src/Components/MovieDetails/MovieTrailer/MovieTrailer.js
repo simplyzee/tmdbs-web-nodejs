@@ -15,7 +15,7 @@ class MovieTrailer extends React.Component {
     }
 
     getMovieTrailerFromId() {
-      var movieTrailerUrl = process.env.NODE_ENV == 'production' ? "http://react-movie-hub.herokuapp.com" : "http://localhost:3000";
+      const movieTrailerUrl = process.env.NODE_ENV == 'production' ? "http://react-movie-hub.herokuapp.com" : "http://localhost:3000";
 
       fetch(movieTrailerUrl + "/api/movie/" + this.props.movieId + "/videos/")
           .then(response => response.json())

@@ -1,0 +1,29 @@
+.related-movies-container {
+  width: 100%;
+  padding-left: 0px;
+
+  ul.related-movies {
+    list-style-type: none;
+    white-space:nowrap;
+    overflow-x:auto;
+
+    li {
+      display: inline-block;
+
+      img {
+        height: 278px;
+        text-align: center;
+        margin: 0 auto;
+        display: block;
+      }
+
+      p.movie-title {
+        margin-top: 10px;
+        color: #FFFFFF;
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: bold;
+      }
+    }
+  }
+}

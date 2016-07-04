@@ -3,6 +3,7 @@ import ReactDom from 'react-dom';
 import { Router, Route, Link, browserHistory } from 'react-router';
 import Main from './Main';
 import MovieDetails from './Components/MovieDetails/MovieDetails';
+import RelatedMovies from './Components/MovieDetails/RelatedMovies/RelatedMovies';
 
 ReactDom.render(
     <Router history={browserHistory}>

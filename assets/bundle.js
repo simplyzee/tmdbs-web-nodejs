@@ -71,6 +71,10 @@
 
 	var _MovieDetails2 = _interopRequireDefault(_MovieDetails);
 
+	var _RelatedMovies = __webpack_require__(560);
+
+	var _RelatedMovies2 = _interopRequireDefault(_RelatedMovies);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	_reactDom2.default.render(_react2.default.createElement(
@@ -49292,6 +49296,10 @@
 
 	var _MovieTrailer2 = _interopRequireDefault(_MovieTrailer);
 
+	var _RelatedMovies = __webpack_require__(560);
+
+	var _RelatedMovies2 = _interopRequireDefault(_RelatedMovies);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -49304,6 +49312,8 @@
 	var Loader = __webpack_require__(533);
 	var Blur = __webpack_require__(555);
 
+	var apiUrl =  false ? "http://react-movie-hub.herokuapp.com" : "http://localhost:3000";
+
 	var MovieDetails = function (_React$Component) {
 	    _inherits(MovieDetails, _React$Component);
 
@@ -49314,6 +49324,7 @@
 
 	        _this.state = {
 	            movie: [],
+	            similar_movies: [],
 	            loaded: false
 	        };
 	        return _this;
@@ -49324,9 +49335,7 @@
 	        value: function getMovieDetails() {
 	            var _this2 = this;
 
-	            var movieDetailsUrl =  false ? "http://react-movie-hub.herokuapp.com" : "http://localhost:3000";
-
-	            fetch(movieDetailsUrl + "/api/movie/" + this.props.params.movieId).then(function (response) {
+	            fetch(apiUrl + "/api/movie/" + this.props.params.movieId).then(function (response) {
 	                return response.json();
 	            }).then(function (results) {
 	                _this2.setState({
@@ -49353,6 +49362,9 @@
 	            var movieId = movieInformation.id;
 	            var moviePoster = movieInformation.poster_path;
 	            var movieBackdrop = movieInformation.backdrop_path;
+
+	            //let movieReleaseDate = movieInformation.length ? movieInformation.release_date : "";
+	            //let movieStatus = movieInformation.length ? movieInformation.status : "";
 
 	            return _react2.default.createElement(
 	                Blur,
@@ -49453,13 +49465,30 @@
 	                                            _react2.default.createElement(
 	                                                'div',
 	                                                { className: 'movie-overview-text' },
-	                                                movieInformation.overview
+	                                                movieInformation.overview,
+	                                                _react2.default.createElement(
+	                                                    'span',
+	                                                    null,
+	                                                    _react2.default.createElement('i', { className: 'fa fa-star', 'aria-hidden': 'true' }),
+	                                                    ' ',
+	                                                    movieInformation.vote_average
+	                                                )
 	                                            ),
 	                                            _react2.default.createElement(
 	                                                'div',
 	                                                { className: 'movie-trailer' },
 	                                                _react2.default.createElement(_MovieTrailer2.default, { movieId: movieId })
 	                                            )
+	                                        ),
+	                                        _react2.default.createElement(
+	                                            'div',
+	                                            { className: 'movie-related-movies' },
+	                                            _react2.default.createElement(
+	                                                'h3',
+	                                                null,
+	                                                'Related Movies'
+	                                            ),
+	                                            _react2.default.createElement(_RelatedMovies2.default, { movieId: movieId })
 	                                        )
 	                                    )
 	                                )
@@ -52487,6 +52516,128 @@
 
 	module.exports = stackBlurImage;
 
+
+/***/ },
+/* 560 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	__webpack_require__(230);
+
+	var _reactBootstrap = __webpack_require__(232);
+
+	var _reactRouter = __webpack_require__(168);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	__webpack_require__(561);
+
+	var apiUrl =  false ? "http://react-movie-hub.herokuapp.com" : "http://localhost:3000";
+
+	var RelatedMovies = function (_React$Component) {
+	    _inherits(RelatedMovies, _React$Component);
+
+	    function RelatedMovies(props) {
+	        _classCallCheck(this, RelatedMovies);
+
+	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(RelatedMovies).call(this, props));
+
+	        _this.state = {
+	            similar_movies: [],
+	            loaded: false
+	        };
+	        return _this;
+	    }
+
+	    _createClass(RelatedMovies, [{
+	        key: 'getRelatedMovies',
+	        value: function getRelatedMovies() {
+	            var _this2 = this;
+
+	            fetch(apiUrl + "/api/movie/" + this.props.movieId + "/similar").then(function (response) {
+	                return response.json();
+	            }).then(function (results) {
+	                console.log(results.results);
+	                _this2.setState({
+	                    similar_movies: results.results,
+	                    loaded: true
+	                });
+	            }).catch(function (err) {
+	                _this2.setState({
+	                    loaded: true
+	                });
+	                console.log('Error fetching related movies', err);
+	            });
+	        }
+	    }, {
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            this.getRelatedMovies();
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+
+	            var relatedMovies = this.state.similar_movies.length ? _react2.default.createElement(
+	                'ul',
+	                { className: 'related-movies list-inline' },
+	                this.state.similar_movies.map(function (result) {
+	                    return _react2.default.createElement(
+	                        'li',
+	                        null,
+	                        _react2.default.createElement(
+	                            _reactRouter.Link,
+	                            { to: "/movie/" + result.id },
+	                            _react2.default.createElement('img', { className: 'img-responsive movie-poster', src: "http://image.tmdb.org/t/p/w185" + result.poster_path })
+	                        ),
+	                        _react2.default.createElement(
+	                            'p',
+	                            { className: 'movie-title' },
+	                            result.title
+	                        )
+	                    );
+	                })
+	            ) : _react2.default.createElement(
+	                'h1',
+	                { className: 'heading-failure' },
+	                'No Related Movies Found'
+	            );
+
+	            return _react2.default.createElement(
+	                'div',
+	                { className: 'related-movies-container' },
+	                relatedMovies
+	            );
+	        }
+	    }]);
+
+	    return RelatedMovies;
+	}(_react2.default.Component);
+
+	exports.default = RelatedMovies;
+
+/***/ },
+/* 561 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
 
 /***/ }
 /******/ ]);

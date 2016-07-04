@@ -9,6 +9,9 @@ import { Link } from 'react-router';
 
 import Header from '../Header/Header';
 import MovieTrailer from './MovieTrailer/MovieTrailer';
+import RelatedMovies from './RelatedMovies/RelatedMovies';
+
+const apiUrl = process.env.NODE_ENV == 'production' ? "http://react-movie-hub.herokuapp.com" : "http://localhost:3000";
 
 class MovieDetails extends React.Component {
 
@@ -17,14 +20,13 @@ class MovieDetails extends React.Component {
 
         this.state = {
             movie: [],
+            similar_movies: [],
             loaded: false
         };
     }
 
     getMovieDetails() {
-      var movieDetailsUrl = process.env.NODE_ENV == 'production' ? "http://react-movie-hub.herokuapp.com" : "http://localhost:3000";
-
-      fetch(movieDetailsUrl + "/api/movie/" + this.props.params.movieId)
+      fetch(apiUrl + "/api/movie/" + this.props.params.movieId)
           .then(response => response.json())
           .then((results) => {
               this.setState({
@@ -50,6 +52,11 @@ class MovieDetails extends React.Component {
         let movieId = movieInformation.id;
         let moviePoster = movieInformation.poster_path;
         let movieBackdrop = movieInformation.backdrop_path;
+
+
+        //let movieReleaseDate = movieInformation.length ? movieInformation.release_date : "";
+        //let movieStatus = movieInformation.length ? movieInformation.status : "";
+
 
         return(
             <Blur img={ 'http://image.tmdb.org/t/p/w1280' + movieBackdrop } blurRadius={100} className="blurred-background">
@@ -102,11 +109,18 @@ class MovieDetails extends React.Component {
 
                                             <div className="movie-overview-text">
                                                 { movieInformation.overview }
+                                                <span><i className="fa fa-star" aria-hidden="true"></i> { movieInformation.vote_average }</span>
                                             </div>
 
                                             <div className="movie-trailer">
                                                 <MovieTrailer movieId={movieId} />
                                             </div>
+                                        </div>
+
+                                        <div className="movie-related-movies">
+                                          <h3>Related Movies</h3>
+
+                                          <RelatedMovies movieId={movieId} />
                                         </div>
                                     </Col>
                                 </Col>

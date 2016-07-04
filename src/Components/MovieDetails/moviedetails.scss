@@ -1,11 +1,12 @@
+.loadedContent {
+  margin-bottom: 50px;
+}
+
 .blurred-background {
   position: absolute!important;
   top: 0;
-  bottom: 0;
   right: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
   display: block;
 
   canvas {
@@ -43,17 +44,17 @@
       li {
         margin-bottom: 10px;
         text-align: left;
-        
+
         i {
           margin-right: 10px;
           text-align: center;
           width: 10%;
         }
-        
+
         a {
           color: #FFFFFF;
           text-decoration: none;
-          
+
           &:hover {
             text-decoration: none;
           }
@@ -81,9 +82,9 @@
 }
 
 .movie-right-info-pane {
-  .movie-overview {
-    color: #FFFFFF;
+  color: #FFFFFF;
 
+  .movie-overview {
     h2 {
       text-transform: uppercase;
       font-weight: bold;
@@ -96,6 +97,13 @@
     .movie-trailer {
       width: 100%;
       margin: 20px 0;
+    }
+  }
+
+  .movie-related-movies {
+    h3 {
+      text-transform: uppercase;
+      font-weight: bold;
     }
   }
 }
