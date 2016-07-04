@@ -166,6 +166,6 @@ ul.movie-images {
   .movie-right-info-pane .movie-overview .movie-trailer {
     width: 100%;
     margin: 20px 0; }
-  .movie-right-info-pane .movie-related-movies h3 {
+  .movie-right-info-pane .movie-related-movies h3, .movie-right-info-pane .movie-backdrop-images h3 {
     text-transform: uppercase;
     font-weight: bold; }
