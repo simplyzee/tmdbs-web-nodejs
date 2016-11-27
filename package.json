@@ -17,7 +17,7 @@
     "css-loader": "^0.23.1",
     "express": "^4.13.4",
     "extract-text-webpack-plugin": "^1.0.1",
-    "jquery": "^2.2.3",
+    "jquery": "^3.0.0",
     "nconf": "^0.8.4",
     "node-sass": "^3.7.0",
     "path": "^0.12.7",
