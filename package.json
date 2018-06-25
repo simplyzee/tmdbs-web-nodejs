@@ -7,7 +7,9 @@
     "build-dist": "node node_modules/webpack/bin/webpack.js",
     "watch": "node node_modules/webpack/bin/webpack -w",
     "start": "node node_modules/webpack/bin/webpack && nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "author": "Zee",
   "license": "ISC",
@@ -33,7 +35,8 @@
     "react-router": "^2.4.1",
     "redux": "^3.5.2",
     "sass-loader": "^3.2.0",
-    "whatwg-fetch": "^0.11.1"
+    "whatwg-fetch": "^0.11.1",
+    "snyk": "^1.83.0"
   },
   "devDependencies": {
     "babel-cli": "^6.8.0",
@@ -48,5 +51,6 @@
     "uglify-js": "~2.4.15",
     "watchify": "~2.0.0",
     "webpack": "^1.13.0"
-  }
+  },
+  "snyk": true
 }
