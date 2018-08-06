@@ -24,7 +24,7 @@
     "react": "^15.0.2",
     "react-blur": "^0.3.1",
     "react-bootstrap": "^0.29.4",
-    "react-dom": "^15.0.2",
+    "react-dom": "^16.0.1",
     "react-loader": "^2.4.0",
     "react-motion": "^0.4.3",
     "react-motion-menu": "^0.2.1",
